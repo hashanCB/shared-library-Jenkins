@@ -31,9 +31,9 @@ class Docker {
         script.echo "increment Version....."
         script.sh'npm version patch --no-git-tag-version'
 
-        def packageJson = readJSON file: 'package.json'
+        def packageJson = script.readJSON file: 'package.json'
         def version = packageJson.version
 
-        env.IMAGE_NAME = "${version}-${env.BUILD_NUMBER}"
+        script.env.IMAGE_NAME = "${version}-${script.env.BUILD_NUMBER}"
     }
 }
