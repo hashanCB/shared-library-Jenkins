@@ -13,7 +13,7 @@ class Docker {
         script.sh 'docker images'
     }
 
-    def DockerLgoin(){
+    def DockerLogin(){
         script.withCredentials([script.usernamePassword(credentialsId:'docker-login-credintials',
                                   passwordVariable: 'PASS',
                                    usernameVariable:'USER')]) {
