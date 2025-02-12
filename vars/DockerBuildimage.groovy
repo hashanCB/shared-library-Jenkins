@@ -1,5 +1,5 @@
 import com.usrserver.Docker
 
-def call(){
-    return  new Docker(this).DockerBuildimage()
+def call(String imagrname){
+    return  new Docker(this).DockerBuildimage(imagrname)
 }
