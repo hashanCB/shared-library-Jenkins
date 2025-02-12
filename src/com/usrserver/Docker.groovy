@@ -29,7 +29,7 @@ class Docker {
 
     def IncrementVersion () {
         script.echo "increment Version....."
-        script.sh'npm run patch'
+        script.sh'npm run patch --no-git-tag-version'
 
         def packageJson = readJSON file: 'package.json'
         def version = packageJson.version
