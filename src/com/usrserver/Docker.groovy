@@ -9,7 +9,7 @@ class Docker {
 
     def DockerBuildimage () {
         script.echo "build image"
-        script.sh 'docker build -t userservice:1.0.1 .'
+        script.sh 'docker build -t hashanc2/userservice:1.0.1 .'
         script.sh 'docker images'
     }
 
