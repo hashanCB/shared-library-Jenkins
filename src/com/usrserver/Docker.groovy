@@ -14,9 +14,9 @@ class Docker {
     }
 
     def DockerLgoin(){
-        script.withCredentials([usernamePassword(credentialsId:'docker-login-credintials',
-                                  passwordVariable:'PASS',
-                                   usernameVariable:'USER')]){
+        script.withCredentials([script.usernamePassword(credentialsId:'docker-login-credintials',
+                                  passwordVariable: 'PASS',
+                                   usernameVariable:' USER')]) {
                     script.sh "echo '${script.PASS}' | docker login -u '${script.USER}' --password-stdin"}
 
 
