@@ -14,11 +14,10 @@ class Docker {
     }
 
     def DockerLgoin(){
-        script.withCreditials(
-                [usernamePassword(credintials:'docker-login-credintials',
-                                  passwordVeriable:'PASS',
+        script.withCreditials([usernamePassword(credintialsId:'docker-login-credintials',
+                                  passwordVariable:'PASS',
                                    usernameVariable:'USER')]{
-                    script.sh "echo '${script.PASS}' | docker login -u '${script.USER}' --passwprd-stdin"}
+                    script.sh "echo '${script.PASS}' | docker login -u '${script.USER}' --password-stdin"}
         )
 
     }
