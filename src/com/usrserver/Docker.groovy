@@ -24,6 +24,6 @@ class Docker {
 
     def DockerPush (String imageName){
         script.sh "docker push '${imageName}'"
-        script.ech "pushed images to docker"
+        script.echo "pushed images to docker"
     }
 }
