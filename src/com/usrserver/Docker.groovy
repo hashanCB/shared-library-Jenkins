@@ -53,10 +53,12 @@ class Docker {
 
 
     def Awsdeplay(String ImageName){
+        def dockercomds2 =  "export IMAGE_NAME=${ImageName}"
+        def dockercomds =  'docker-compose -f /home/ec2-user/docker-compose.yml up --detach'
         script.sshagent(['aws-ec2-userser']) {
             script.sh 'scp -o StrictHostKeyChecking=no docker-compose.yml ec2-user@13.60.196.175:/home/ec2-user'
-            script.sh "export IMAGE_NAME=${ImageName}"
-            script.sh 'docker-compose -f /home/ec2-user/docker-compose.yml up --detach'
+            script.sh "ssh -o StrictHostKeyChecking=no  ec2-user@13.60.196.175 ${dockercomds2}"
+            script.sh "ssh -o StrictHostKeyChecking=no  ec2-user@13.60.196.175 ${dockercomds}"
         }
     }
 }
