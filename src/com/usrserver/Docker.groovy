@@ -52,9 +52,9 @@ class Docker {
     }
 
 
-    def Awsdeplay(){
+    def Awsdeplay(String ImageName){
         script.sshagent(['aws-ec2-userser']) {
-            script.sh 'ls'
+            script.sh 'scp docker-composer.yml ec2-user@13.60.196.175:/home/ec2-user '
 
         }
     }
