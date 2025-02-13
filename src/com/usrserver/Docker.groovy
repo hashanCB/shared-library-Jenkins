@@ -36,4 +36,19 @@ class Docker {
 
         script.env.IMAGE_NAME = "${version}-${script.env.BUILD_NUMBER}"
     }
+
+    def GitversionCommi(){
+        script.withCredentials([script.usernamePassword(credentialsId:'github-credentials',
+                passwordVariable: 'PASS',
+                usernameVariable:'USER')]) {
+            script.sh 'git config --global user.email "jenkins@gmail.com"'
+            script.sh 'git config --global user.name "jenkins"'
+            script.sh 'git  remote set-url origin https://"${USER}:${PASS}"@github.com:hashanCB/userService.git"'
+            script.sh 'git add .'
+            script.sh 'git commit -m " from  jenkins : update version"'
+            script.sh 'git push origin HEAD:main'
+
+        }
+
+    }
 }
