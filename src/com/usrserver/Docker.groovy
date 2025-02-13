@@ -31,7 +31,7 @@ class Docker {
         script.echo "increment Version....."
         script.sh'npm version patch --no-git-tag-version'
 
-        def packageJson = script.readJSON file: 'package.json'
+        def packageJson = script.readJSON file: 'package.json' //Pipeline Utility Steps pluging
         def version = packageJson.version
 
         script.env.IMAGE_NAME = "${version}-${script.env.BUILD_NUMBER}"
@@ -49,5 +49,13 @@ class Docker {
 
         }
 
+    }
+
+
+    def awsdeplay(){
+        script.sshagent(['aws-ec2-userser']) {
+            script.sh 'ls'
+
+        }
     }
 }
