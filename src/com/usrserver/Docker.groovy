@@ -38,12 +38,11 @@ class Docker {
     }
 
     def GitversionCommi(){
-        script.withCredentials([script.usernamePassword(credentialsId:'github-credentials',
-                passwordVariable: 'PASS',
-                usernameVariable:'USER')]) {
+        script.withCredentials([script.string(credentialsId:'github-key',
+                variable: 'GITHUB_TOKEN') ]) {
             script.sh 'git config --global user.email "jenkins@gmail.com"'
             script.sh 'git config --global user.name "jenkins"'
-            script.sh 'git remote set-url origin https://${USER}:${PASS}@github.com/hashanCB/userService.git'
+            script.sh 'git remote set-url origin https://${GITHUB_TOKEN}@github.com/hashanCB/userService.git'
             script.sh 'git add .'
             script.sh 'git commit -m " from  jenkins : update version"'
             script.sh 'git push origin HEAD:main'
