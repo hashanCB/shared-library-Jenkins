@@ -52,7 +52,7 @@ class Docker {
     }
 
 
-    def awsdeplay(){
+    def Awsdeplay(){
         script.sshagent(['aws-ec2-userser']) {
             script.sh 'ls'
 
